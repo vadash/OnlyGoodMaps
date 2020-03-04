@@ -4,7 +4,7 @@ ExileApi plugin. Warn user about bad map layout. Map base is updated to 3.9 poe 
 
 S/A-tier t14+ maps - green border
 
-B/C/D-tier t14+ maps - red border
+B/C/D-tier t14+ maps - red border + sound
 
 Unknown maps - yellow border
 
