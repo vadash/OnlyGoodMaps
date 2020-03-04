@@ -1,6 +1,6 @@
 # OnlyGoodMaps
 
-ExileApi plugin. Warn user about bad map layout. Map base is updated to 3.9 poe patch.
+Warns user about bad map layout. Map base is updated to 3.9 poe patch.
 
 S/A-tier maps - Green border. Kill boss
 
