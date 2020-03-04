@@ -118,6 +118,7 @@ namespace OnlyGoodMaps
             "Temple",
             "Terrace",
             "Tower",
+            "Vaal Temple",
             "Vault",
             "Volcano",
         };
@@ -185,7 +186,6 @@ namespace OnlyGoodMaps
             "Shrine",
             "Sunken City",
             "Vaal Pyramid",
-            "Vaal Temple",
             "Villa",
             "Wasteland",
         };
