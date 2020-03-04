@@ -1,6 +1,6 @@
 # OnlyGoodMaps
 
-Warns user about bad map layouts. Map base is updated to 3.9 poe patch.
+Warns user about bad map layouts. Map base is updated to 3.9 poe patch (65 very good + 28 good + 41 cancer + 19 unqiue = 153/153 maps)
 
 S/A-tier map - Green border. Kill boss
 
