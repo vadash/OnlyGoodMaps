@@ -194,7 +194,8 @@ namespace OnlyGoodMaps
         
         public override void Render()
         {
-            if (!Settings.Enable)
+            if (!Settings.Enable ||
+                !Settings.DrawEnable)
                 return;
             Color color; 
             switch (CurrentZone)
@@ -212,9 +213,9 @@ namespace OnlyGoodMaps
                     color = Color.Red;
                     break;
                 case MapTypes.Good:
-                    color = Color.Green;
-                    break;
                 case MapTypes.Best:
+                    if (!Settings.DrawEnable)
+                        return;
                     color = Color.DarkGreen;
                     break;
                 default:

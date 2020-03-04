@@ -10,6 +10,8 @@ namespace OnlyGoodMaps
         public Settings()
         {
             Enable = new ToggleNode(false);
+            ShowGoodMaps = new ToggleNode(true);
+            DrawEnable = new ToggleNode(true);
             MapFrameX0 = new RangeNode<int>(1645, 0, 3840);
             MapFrameY0 = new RangeNode<int>(9, 0, 2160);
             MapFrameWidth = new RangeNode<int>(266, 100, 600);
@@ -23,6 +25,12 @@ namespace OnlyGoodMaps
 
         [Menu("Enable", 901, 900)] 
         public ToggleNode Enable { get; set; }
+        
+        [Menu("ShowGoodMaps", 902, 900)] 
+        public ToggleNode ShowGoodMaps { get; set; }
+        
+        [Menu("DrawEnable", 903, 900)] 
+        public ToggleNode DrawEnable { get; set; }
         
         [Menu("Where to draw minimap overlay", 1000)]
         public EmptyNode MapFrameRoot { get; set; }
