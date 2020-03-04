@@ -1,35 +1,26 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using ExileCore;
-using ExileCore.Shared;
-using ExileCore.Shared.Enums;
 using SharpDX;
-using ImGuiNET;
 
-// ReSharper disable IteratorNeverReturns
-// ReSharper disable UnusedMember.Local
-// ReSharper disable RedundantExtendsListEntry
 // ReSharper disable UnusedType.Global
 
-namespace LazyPricer
+namespace OnlyGoodMaps
 {
     [Obfuscation(Feature = "Apply to member * when constructor: virtualization", Exclude = false)]
-    public partial class Core : BaseSettingsPlugin<Settings>
+    public class Core : BaseSettingsPlugin<Settings>
     {
         private enum MapTypes
         {
-            Skip,
-            Unknown,
-            Cancer,
-            Good,
-            Best
+            Best, // S tier
+            Good, // A tier
+            Skip, // Town, Hideout, Campaign
+            Cancer, // Bad layouts
+            Unknown, // Everything else
         }
         
         private IEnumerable<string> STierMaps { get; } = new List<string>
@@ -168,15 +159,13 @@ namespace LazyPricer
             "Wasteland"
         };
 
-        private MapTypes CurrentAreaQuality { get; set; }
-
+        private MapTypes CurrentZone { get; set; }
         
         public Core()
         {
-            Name = "LazyPricer";
+            Name = "OnlyGoodMaps";
         }
 
-        [Obfuscation(Feature = "virtualization", Exclude = false)]
         public override bool Initialise()
         {
             return true;
@@ -185,7 +174,7 @@ namespace LazyPricer
         public override void Render()
         {
             Color color; 
-            switch (CurrentAreaQuality)
+            switch (CurrentZone)
             {
                 case MapTypes.Skip:
                     return;
@@ -215,18 +204,19 @@ namespace LazyPricer
         public override void AreaChange(AreaInstance area)
         {
             base.AreaChange(area);
-            CurrentAreaQuality = MapTypes.Unknown;
-            if (area.IsHideout || area.IsHideout || area.IsTown)
-                CurrentAreaQuality = MapTypes.Skip;
+            CurrentZone = MapTypes.Unknown;
+            if (area.HasWaypoint || area.IsHideout || area.IsTown || area.RealLevel < 68) 
+                CurrentZone = MapTypes.Skip;
             else if (Contains(CancerMaps, area.DisplayName))
             {
-                CurrentAreaQuality = MapTypes.Cancer;
+                CurrentZone = MapTypes.Cancer;
+                Play(DirectoryFullName + @"\Media\Cancer.wav");
                 DebugWindow.LogMsg("Shit map detected. Dont kill boss", 60, Color.Red);
             }
             else if (Contains(STierMaps, area.DisplayName))
-                CurrentAreaQuality = MapTypes.Best;
+                CurrentZone = MapTypes.Best;
             else if (Contains(ATierMaps, area.DisplayName))
-                CurrentAreaQuality = MapTypes.Good;
+                CurrentZone = MapTypes.Good;
         }
 
         private static bool Contains(IEnumerable<string> list, string str)
@@ -234,6 +224,12 @@ namespace LazyPricer
             return list.Any(line => 
                 line.ToLower().Contains(str.ToLower()) ||
                 str.ToLower().Contains(line.ToLower()));
+        }
+        
+        private static void Play(string file)
+        {
+            if (File.Exists(file) && file.EndsWith(".wav")) 
+                new SoundPlayer(file).Play();
         }
     }
 }
