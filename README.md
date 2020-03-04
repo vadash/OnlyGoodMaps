@@ -13,3 +13,7 @@ Unknown t14+ map - Yellow border. Usually means plugin is outdated
 ## Install instructions
 
 https://github.com/vadash/TowerDefense/wiki/How-to-compile-plugin-from-sources
+
+## Atlas tips
+
+https://old.reddit.com/r/pathofexile/comments/fdfzdv/guide_39_atlas_shenanigans_including_methods_to/
