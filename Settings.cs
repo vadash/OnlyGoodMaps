@@ -18,25 +18,25 @@ namespace OnlyGoodMaps
 
         #region About
 
-        [Menu("Global settings", 900)] 
+        [Menu("OnlyGoodMaps plugin. Green = good, Red = bad, Yellow = outdated", 900)] 
         public EmptyNode AboutRoot { get; set; }
 
         [Menu("Enable", 901, 900)] 
         public ToggleNode Enable { get; set; }
         
-        [Menu("Where to draw minimap overlay", 900)]
+        [Menu("Where to draw minimap overlay", 1000)]
         public EmptyNode MapFrameRoot { get; set; }
 
-        [Menu("Top left X", "", 910, 900)] 
+        [Menu("Top left X", "", 1010, 1000)] 
         public RangeNode<int> MapFrameX0 { get; set; }
 
-        [Menu("Top left Y", "", 911, 900)] 
+        [Menu("Top left Y", "", 1011, 1000)] 
         public RangeNode<int> MapFrameY0 { get; set; }
 
-        [Menu("Width", "", 912, 900)] 
+        [Menu("Width", "", 1012, 1000)] 
         public RangeNode<int> MapFrameWidth { get; set; }
 
-        [Menu("Height", "", 913, 900)] 
+        [Menu("Height", "", 1013, 1000)] 
         public RangeNode<int> MapFrameHeight { get; set; }
         
         #endregion

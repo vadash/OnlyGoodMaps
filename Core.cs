@@ -86,6 +86,29 @@ namespace OnlyGoodMaps
             "Graveyard",
             "Lookout",
         };
+
+        private IEnumerable<string> UniqueMaps { get; } = new List<string>
+        {
+            "Vault's of Atziri",
+            "Perandus Manor",
+            "Vinktar Square",
+            "Twilight Temple",
+            "Olmec's Sanctum",
+            "Coward's Trial",
+            "Putrid Cloister",
+            "Poorjoys",
+            "Maelstorm of Chaos",
+            "Whaka",
+            "Death and Taxes",
+            "Mao Kun",
+            "Pillars of Arun",
+            "Oba's Cursed Trove",
+            "Caer blaid",
+            "Doryanis Machinarium",
+            "Hallowed Ground",
+            "Hall of the Grand Master's",
+            "Acton's Nightmare"
+        };
         
         private IEnumerable<string> CancerMaps { get; } = new List<string>
         {
@@ -209,15 +232,14 @@ namespace OnlyGoodMaps
             CurrentZone = MapTypes.Skip;
             if (area.HasWaypoint || area.IsHideout || area.IsTown || area.RealLevel < 68) 
                 CurrentZone = MapTypes.Skip;
-            else if (Contains(CancerMaps, area.DisplayName))
+            else if (Contains(CancerMaps, area.Name))
             {
                 CurrentZone = MapTypes.Cancer;
                 Play(DirectoryFullName + @"\Media\Cancer.wav");
-                DebugWindow.LogMsg("Shit map detected. Dont kill boss", 60, Color.Red);
             }
-            else if (Contains(STierMaps, area.DisplayName))
+            else if (Contains(STierMaps, area.Name))
                 CurrentZone = MapTypes.Best;
-            else if (Contains(ATierMaps, area.DisplayName))
+            else if (Contains(ATierMaps, area.Name))
                 CurrentZone = MapTypes.Good;
             else if (area.RealLevel >= 81) // t14+ = 81+ area lvl
                 CurrentZone = MapTypes.Unknown;
@@ -225,11 +247,17 @@ namespace OnlyGoodMaps
 
         private static bool Contains(IEnumerable<string> list, string str)
         {
-            return list.Any(line => 
-                line.ToLower().Contains(str.ToLower()) ||
-                str.ToLower().Contains(line.ToLower()));
+            var str2 = TrimString(str);
+            return list
+                .Select(TrimString)
+                .Any(line2 => LevenshteinDistance.Compute(line2, str2) <= 1);
         }
-        
+
+        private static string TrimString(string str)
+        {
+            return str.ToLower().Replace("\'", "").Replace(" ", "");
+        }
+
         private static void Play(string file)
         {
             if (File.Exists(file) && file.EndsWith(".wav")) 
