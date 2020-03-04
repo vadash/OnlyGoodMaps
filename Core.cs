@@ -194,6 +194,8 @@ namespace OnlyGoodMaps
         
         public override void Render()
         {
+            if (!Settings.Enable)
+                return;
             Color color; 
             switch (CurrentZone)
             {
@@ -229,8 +231,12 @@ namespace OnlyGoodMaps
         public override void AreaChange(AreaInstance area)
         {
             base.AreaChange(area);
+            if (!Settings.Enable)
+                return;
             CurrentZone = MapTypes.Skip;
             if (area.HasWaypoint || area.IsHideout || area.IsTown || area.RealLevel < 68) 
+                CurrentZone = MapTypes.Skip;
+            else if (Contains(UniqueMaps, area.Name))
                 CurrentZone = MapTypes.Skip;
             else if (Contains(CancerMaps, area.Name))
             {
