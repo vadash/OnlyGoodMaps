@@ -2,11 +2,11 @@
 
 ExileApi plugin. Warn user about bad map layout. Map base is updated to 3.9 poe patch.
 
-S/A-tier t14+ maps - green border
+S/A-tier maps - Green border. Kill boss
 
-B/C/D-tier t14+ maps - red border + sound
+B/C/D-tier maps - Red border + sound. Skip boss
 
-Unknown maps - yellow border
+Unknown maps t14+ - Yellow border. Usually means plugin is outdated
 
 ![preview](https://i.imgur.com/mVWJwTV.png)
 
