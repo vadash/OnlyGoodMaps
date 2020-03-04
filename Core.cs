@@ -175,7 +175,11 @@ namespace OnlyGoodMaps
             switch (CurrentZone)
             {
                 case MapTypes.Skip:
-                    return;
+                    if (MenuWindow.IsOpened)
+                        color = Color.DarkGray;
+                    else
+                        return;
+                    break;
                 case MapTypes.Unknown:
                     color = Color.Yellow;
                     break;
@@ -192,10 +196,10 @@ namespace OnlyGoodMaps
                     throw new ArgumentOutOfRangeException();
             }
             var rect = new RectangleF(
-                1645,
-                9,
-                266,
-                266);
+                Settings.MapFrameX0,
+                Settings.MapFrameY0,
+                Settings.MapFrameWidth,
+                Settings.MapFrameHeight);
             Graphics.DrawFrame(rect, color, 5);
         }
 
@@ -215,7 +219,7 @@ namespace OnlyGoodMaps
                 CurrentZone = MapTypes.Best;
             else if (Contains(ATierMaps, area.DisplayName))
                 CurrentZone = MapTypes.Good;
-            else if (area.RealLevel >= 81) // t14 = 81 area lvl
+            else if (area.RealLevel >= 81) // t14+ = 81+ area lvl
                 CurrentZone = MapTypes.Unknown;
         }
 
