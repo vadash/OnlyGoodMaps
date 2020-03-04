@@ -8,10 +8,8 @@ using ExileCore;
 using SharpDX;
 
 // ReSharper disable UnusedType.Global
-
 namespace OnlyGoodMaps
 {
-    [Obfuscation(Feature = "Apply to member * when constructor: virtualization", Exclude = false)]
     public class Core : BaseSettingsPlugin<Settings>
     {
         private enum MapTypes
@@ -99,7 +97,7 @@ namespace OnlyGoodMaps
             "Cage",
             "Tower",
             "Gardens",
-            "Colloseum",
+            "Colosseum",
             "Desert Spring",
             "Arachnid Tomb",
             "Geode",
@@ -204,7 +202,7 @@ namespace OnlyGoodMaps
         public override void AreaChange(AreaInstance area)
         {
             base.AreaChange(area);
-            CurrentZone = MapTypes.Unknown;
+            CurrentZone = MapTypes.Skip;
             if (area.HasWaypoint || area.IsHideout || area.IsTown || area.RealLevel < 68) 
                 CurrentZone = MapTypes.Skip;
             else if (Contains(CancerMaps, area.DisplayName))
@@ -217,6 +215,8 @@ namespace OnlyGoodMaps
                 CurrentZone = MapTypes.Best;
             else if (Contains(ATierMaps, area.DisplayName))
                 CurrentZone = MapTypes.Good;
+            else if (area.RealLevel >= 81) // t14 = 81 area lvl
+                CurrentZone = MapTypes.Unknown;
         }
 
         private static bool Contains(IEnumerable<string> list, string str)
