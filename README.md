@@ -40,11 +40,11 @@ The way this plays out in practice is something like this for some of X maps run
 1. No strat (all maps): 
  - 100 maps drop in X maps run over Y hours, 
  - 10 tier 'Z' maps drop, 
- - but most of those are shit maps, only 2 maps are worth running. The rest rot in your stash and/or you're forced to run them when you run out of good/desired maps and just hope to get better map drops.
+ - but most of those are shit maps, only 5 maps are worth running. The rest rot in your stash and/or you're forced to run them when you run out of good/desired maps and just hope to get better map drops.
 2. Some strat (subset of premium maps completed): 
   - 200 maps drop in X maps run over Y/2 hours.
-  - 12 tier 'Z' maps drop, 
-  - but most/all of those are good/desired maps, so 12 maps are worth running. 
+  - 15 tier 'Z' maps drop, 
+  - but most/all of those are good/desired maps, so 15 maps are worth running. 
   - Not only do you spend less time generating more maps, but you're spend most/all your time running only the good/desired maps, and probably even have excess good maps to sell off, which players want because they are good maps.
 
 Clearly, 2 is a just better and always has been when it comes to pure mapping. The only difference now is you can permanently brick your atlas, requiring a new account, instead of just spending a few chaos to uncomplete a map.
