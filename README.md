@@ -17,3 +17,13 @@ https://github.com/vadash/TowerDefense/wiki/How-to-compile-plugin-from-sources
 ## Atlas tips
 
 https://old.reddit.com/r/pathofexile/comments/fdfzdv/guide_39_atlas_shenanigans_including_methods_to/
+
+## Added altenative python script (when hud is down)
+
+Install python 3
+
+Run once install_python_script.cmd
+
+Edit game path in OnlyGoodMaps.py
+
+Run OnlyGoodMaps.py
