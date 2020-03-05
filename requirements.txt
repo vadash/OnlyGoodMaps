@@ -1,0 +1,6 @@
+2to3==1.0
+Brotli==1.0.7
+playsound==1.2.2
+pypiwin32==223
+pywin32==227
+win10toast==0.9
