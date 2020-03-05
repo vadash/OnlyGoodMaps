@@ -11,7 +11,7 @@ maps = ["Academy",
         "Bone Crypt",
         "Cage",
         "Cells",
-        "Colloseum",
+        "Colosseum",
         "Conservatory",
         "Coral Ruins",
         "Core",
@@ -50,10 +50,12 @@ with open('C:\\games\\poe\\logs\\Client.txt', 'r') as f:
         while True:
             line = f.readline()
             if not line:
-                time.sleep(1)
-            else:
-                print(line)
-                for map in maps:
-                        if map in line:
-                                playsound("Media\\Cancer.wav")
-                                toaster.show_toast("DO NOT RUN MAP", map)
+                time.sleep(2)
+                continue
+            print(line)
+            if not "You have entered" in line:
+                continue
+            for map in maps:
+                if map in line:
+                    playsound("Media\\Cancer.wav")
+                    toaster.show_toast("DO NOT RUN MAP", map)
