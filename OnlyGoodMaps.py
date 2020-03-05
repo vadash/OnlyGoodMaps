@@ -3,8 +3,6 @@ from win10toast import ToastNotifier
 from playsound import playsound
 
 toaster = ToastNotifier()
-file = open('C:\\games\\poe\\logs\\Client.txt', 'r')
-file.seek(0, 2)
 
 maps = ["Academy",
         "Ancient City",
@@ -47,18 +45,15 @@ maps = ["Academy",
         "Villa",
         "Wasteland"] 
 
-playsound("Media\\Cancer.wav")
-while 1:
-	where = file.tell()
-	line = file.readline()
-	if not line:
-		time.sleep(1)
-		file.seek(where)
-	else:
-		print(line)
-		for map in maps:
-			if map in line:
-                                toaster.show_toast("DO NOT RUN MAP", map)
-                                toaster.show_toast("DO NOT RUN MAP", map)
-                                toaster.show_toast("DO NOT RUN MAP", map)
+with open('C:\\games\\poe\\logs\\Client.txt', 'r') as f:
+        f.seek(0, 2)
+        while True:
+            line = f.readline()
+            if not line:
+                time.sleep(1)
+            else:
+                print(line)
+                for map in maps:
+                        if map in line:
                                 playsound("Media\\Cancer.wav")
+                                toaster.show_toast("DO NOT RUN MAP", map)
