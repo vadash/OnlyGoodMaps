@@ -1,2 +1,2 @@
 pip install -r requirements.txt
-timeout 5
+timeout 10
