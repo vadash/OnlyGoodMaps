@@ -3,5 +3,5 @@ Brotli==1.0.7
 playsound==1.2.2
 psutil==5.7.0
 pypiwin32==223
-pywin32==227
+pywin32==301
 win10toast==0.9
